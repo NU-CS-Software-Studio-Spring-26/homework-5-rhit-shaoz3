@@ -1,0 +1,13 @@
+---
+description: Rails 8 conventions for the activity finder app
+alwaysApply: true
+---
+
+- Prefer standard Rails 8 conventions and Hotwire/Turbo-friendly responses over custom JavaScript.
+- Keep migrations reversible and scoped to this app; do not import models, migrations, or schema ideas from unrelated projects.
+- Use `bin/rails generate` for Rails boilerplate such as models, controllers, migrations, and tests when practical.
+- Always use strong parameters in controllers; never mass-assign raw `params`.
+- Keep authentication and authorization checks centralized through existing controller/helper patterns such as `current_user`.
+- Preserve the app’s Activity domain language: use fields like `title`, `city`, `category`, `event_date`, and Active Storage `images`.
+- Do not add new gems, background job systems, or external services without explicit approval.
+- Do not hard-code secrets, API keys, AWS credentials, Google Maps keys, or production configuration in source files.

@@ -2,6 +2,12 @@
 
 one:
   description: MyString
+  user: one
+  completed: false
+  high_priority: false
 
 two:
   description: MyString
+  user: two
+  completed: false
+  high_priority: false

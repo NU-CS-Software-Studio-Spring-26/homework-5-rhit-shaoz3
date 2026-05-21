@@ -1,0 +1,9 @@
+# password_digest generated with BCrypt::Password.create("password", cost: 4)
+
+one:
+  email: user1@example.com
+  password_digest: "$2a$04$0gfK9IRQ14U09CVXt/HvVe9mpG168NXNZrXX2Ls86JjPl3a7.9TaG"
+
+two:
+  email: user2@example.com
+  password_digest: "$2a$04$0gfK9IRQ14U09CVXt/HvVe9mpG168NXNZrXX2Ls86JjPl3a7.9TaG"

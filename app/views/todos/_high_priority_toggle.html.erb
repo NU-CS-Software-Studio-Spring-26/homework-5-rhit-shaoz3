@@ -1,0 +1,5 @@
+<% toggle_label = todo.high_priority? ? "★ High" : "☆ Normal" %>
+<%= button_to toggle_label,
+      toggle_high_priority_todo_path(todo),
+      method: :patch,
+      form: { data: { turbo_stream: true } } %>
