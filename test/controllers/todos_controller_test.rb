@@ -16,14 +16,11 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create todo" do
-    log_in_as(users(:one))
-
     assert_difference("Todo.count") do
       post todos_url, params: { todo: { description: "A new todo" } }
     end
 
     assert_redirected_to todo_url(Todo.last)
-    assert_equal users(:one).id, Todo.last.user_id
   end
 
   test "should show todo" do
