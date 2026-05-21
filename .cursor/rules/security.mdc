@@ -1,0 +1,13 @@
+---
+description: Security rules for the Rails app
+alwaysApply: true
+---
+
+- Never write, log, echo, commit, or expose secrets, API keys, AWS credentials, Google Maps keys, database URLs, or production credentials.
+- Never use `eval`, `class_eval`, `instance_eval`, shell interpolation, or dynamic constant loading on user-controlled input.
+- Never use `html_safe` or `raw` on untrusted input; prefer Rails escaping and sanitized helpers.
+- Use parameterized queries or Active Record query methods; never string-interpolate user input into SQL.
+- Do not disable CSRF protection, mass assignment protection, authentication checks, authorization checks, or Devise/session protections.
+- Do not add `skip_before_action :verify_authenticity_token` unless explicitly approved for a well-documented non-browser API endpoint.
+- Keep strong parameters explicit and minimal; never permit entire nested params blindly.
+- Do not log uploaded files, request bodies, session contents, tokens, cookies, or credentials.
