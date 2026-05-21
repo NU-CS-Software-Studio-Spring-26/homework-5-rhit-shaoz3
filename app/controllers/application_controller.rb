@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def require_login
     return if logged_in?
 
-    redirect_to new_session_path, alert: "You must be logged in to continue."
+    redirect_to todos_path, alert: "You must be logged in to continue."
   end
 
   def authorize_todo_owner!

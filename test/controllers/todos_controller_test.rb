@@ -16,11 +16,14 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create todo" do
+    log_in_as(users(:one))
+
     assert_difference("Todo.count") do
-      post todos_url, params: { todo: { description: @todo.description } }
+      post todos_url, params: { todo: { description: "A new todo" } }
     end
 
     assert_redirected_to todo_url(Todo.last)
+    assert_equal users(:one).id, Todo.last.user_id
   end
 
   test "should show todo" do
@@ -44,5 +47,24 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to todos_url
+  end
+
+  test "toggle_high_priority returns turbo stream and flips flag" do
+    assert_not @todo.high_priority?
+
+    patch toggle_high_priority_todo_url(@todo),
+          headers: { "Accept" => "text/vnd.turbo-stream.html" }
+
+    assert_response :success
+    assert_equal "text/vnd.turbo-stream.html", response.media_type
+    assert_match(/turbo-stream/, response.body)
+    assert_select "turbo-stream[action='replace'][target='#{dom_id(@todo)}']"
+    assert @todo.reload.high_priority?
+
+    patch toggle_high_priority_todo_url(@todo),
+          headers: { "Accept" => "text/vnd.turbo-stream.html" }
+
+    assert_response :success
+    assert_not @todo.reload.high_priority?
   end
 end
